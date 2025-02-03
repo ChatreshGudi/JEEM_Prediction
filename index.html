@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JEEM Prediction</title>
+    <!-- PyScript CSS -->
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+
+    <!-- This script tag bootstraps PyScript -->
+    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+</head>
+<body>
+    <input type = "number" placeholder="Rank" min="0" step="1000" id="rank" />
+    <button py-click="predict" id="predict_score">Predict Colleges</button>
+    <div id="result"></div>
+    <script type="py" src="./main.py" config="./pyscript.json"></script>
+</body>
+</html>
