@@ -1,10 +1,7 @@
 import json
 import pandas as pd
 import numpy as np
-try:
-    import matplotlib.pyplot as plt
-except ImportError:
-    pass
+import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.preprocessing import MinMaxScaler
@@ -79,35 +76,32 @@ class BidirectionalPredictor:
 
     def plot_both_directions(self, marks, ranks):
         """Plot both prediction directions"""
-        try:
-            fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 6))
+        fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 6))
 
-            # Plot marks -> ranks
-            ax1.scatter(marks, ranks, color='blue', label='Actual Data')
-            X_smooth = np.linspace(min(marks), max(marks), 300)
-            y_smooth = self.predict_rank(X_smooth)
-            ax1.plot(X_smooth, y_smooth, color='red', label='Prediction')
-            ax1.set_xlabel('Marks')
-            ax1.set_ylabel('Rank')
-            ax1.set_title('Marks → Rank Prediction')
-            ax1.legend()
-            ax1.grid(True)
+        # Plot marks -> ranks
+        ax1.scatter(marks, ranks, color='blue', label='Actual Data')
+        X_smooth = np.linspace(min(marks), max(marks), 300)
+        y_smooth = self.predict_rank(X_smooth)
+        ax1.plot(X_smooth, y_smooth, color='red', label='Prediction')
+        ax1.set_xlabel('Marks')
+        ax1.set_ylabel('Rank')
+        ax1.set_title('Marks → Rank Prediction')
+        ax1.legend()
+        ax1.grid(True)
 
-            # Plot ranks -> marks
-            ax2.scatter(ranks, marks, color='blue', label='Actual Data')
-            X_smooth = np.linspace(min(ranks), max(ranks), 300)
-            y_smooth = self.predict_marks(X_smooth)
-            ax2.plot(X_smooth, y_smooth, color='red', label='Prediction')
-            ax2.set_xlabel('Rank')
-            ax2.set_ylabel('Marks')
-            ax2.set_title('Rank → Marks Prediction')
-            ax2.legend()
-            ax2.grid(True)
+        # Plot ranks -> marks
+        ax2.scatter(ranks, marks, color='blue', label='Actual Data')
+        X_smooth = np.linspace(min(ranks), max(ranks), 300)
+        y_smooth = self.predict_marks(X_smooth)
+        ax2.plot(X_smooth, y_smooth, color='red', label='Prediction')
+        ax2.set_xlabel('Rank')
+        ax2.set_ylabel('Marks')
+        ax2.set_title('Rank → Marks Prediction')
+        ax2.legend()
+        ax2.grid(True)
 
-            plt.tight_layout()
-            plt.show()
-        except Exception:
-            pass
+        plt.tight_layout()
+        plt.show()
 
 class Marks_vs_Rank_Analyser:
     def __init__(self, year):
